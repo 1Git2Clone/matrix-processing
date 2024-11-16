@@ -20,20 +20,24 @@ jobs:
           pip install uv
           pip install ruff
           pip install pyright
-      - name: Virtual environment and requirements.txt
-        run: |
-          uv venv
-          source ./.venv/bin/activate
-          if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
       - name: Ruff check
         run: |
           ruff check
       - name: Pyright
         run: |
+          uv venv
+          source ./.venv/bin/activate
+          if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
           pyright
       - name: Tests
         run: |
+          uv venv
+          source ./.venv/bin/activate
+          if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
           python3 ./tests/main.py
       - name: Main
         run: |
+          uv venv
+          source ./.venv/bin/activate
+          if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
           python3 ./src/main.py
