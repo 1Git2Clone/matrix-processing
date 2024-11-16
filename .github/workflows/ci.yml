@@ -18,6 +18,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install uv
+          pip install ruff
+      - name: Virtual environment and requirements.txt
+        run: |
           uv venv
           source ./.venv/bin/activate
           if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
