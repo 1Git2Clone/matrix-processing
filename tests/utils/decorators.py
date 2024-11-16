@@ -3,7 +3,7 @@ from typing import Callable, Any
 from textwrap import wrap
 
 from tests.utils.constants import FORMAT_CENTER
-from tests.utils.printing import print_fn, print_fn_to_str
+from tests.utils.printing import print_args_to_str, print_fn, print_fn_to_str
 
 
 def test(test_count: int, exec_args: list[Any] = []) -> Callable:
@@ -45,11 +45,7 @@ def test(test_count: int, exec_args: list[Any] = []) -> Callable:
                     ),
                 )
                 + "\n"
-                + f"CURRENT ARGS ({len(exec_args)}): [{", ".join(
-                    [
-                        f"{arg}: {type(arg).__name__}" for arg in exec_args
-                    ]
-                )}].",
+                + print_args_to_str(exec_args),
             )
             print(end="\n")
             raise e

@@ -1,6 +1,6 @@
 from inspect import signature
 
-from typing import Callable
+from typing import Any, Callable
 
 
 def print_fn_to_str(fn: Callable) -> str:
@@ -14,3 +14,12 @@ def print_fn_to_str(fn: Callable) -> str:
 
 def print_fn(fn: Callable) -> None:
     print(print_fn_to_str(fn))
+
+
+def print_args_to_str(args: list[Any]) -> str:
+    formatted_args = ", ".join([f"{arg}: {type(arg).__name__}" for arg in args])
+    return f"CURRENT ARGS ({len(args)}): [{formatted_args}]."
+
+
+def print_args(args: list[Any]) -> None:
+    print(print_args_to_str(args))
