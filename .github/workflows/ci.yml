@@ -19,6 +19,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install uv
           pip install ruff
+          pip install pyright
       - name: Virtual environment and requirements.txt
         run: |
           uv venv
