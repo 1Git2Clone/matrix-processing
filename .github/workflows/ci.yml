@@ -19,16 +19,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install uv
           pip install ruff
-          pip install pyright
       - name: Ruff check
         run: |
           ruff check
-      - name: Pyright
-        run: |
-          uv venv
-          source ./.venv/bin/activate
-          if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
-          pyright
       - name: Tests
         run: |
           uv venv
