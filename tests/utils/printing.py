@@ -5,9 +5,16 @@ from typing import Any, Callable
 
 def print_fn_to_str(fn: Callable) -> str:
     fn_sig = signature(fn)
+    formatted_signature_parameters = "".join(
+        [
+            f"{param_name}: {param.annotation.__name__}"
+            for param_name, param in fn_sig.parameters.items()
+        ]
+        or ""
+    )
     return (
         f"def {fn.__name__}"
-        + f"({"".join([f"{param_name}: {param.annotation.__name__}" for param_name, param in fn_sig.parameters.items()] or "")})"
+        + f"({formatted_signature_parameters})"
         + f" -> {fn_sig.return_annotation or None}: ..."
     )
 
